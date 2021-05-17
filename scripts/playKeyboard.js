@@ -1,3 +1,4 @@
+
 function playKeyboard() {
 
 	let pressColor = '#1BC0EA'; //color when key is pressed
@@ -105,17 +106,16 @@ function playKeyboard() {
 		186: 'I,0',
 	};
 
-	var reverseLookup = {};
-
-	// Create a reverse lookup table.
-	for (var i in keyboard) {
-
-		reverseLookup[keyboard[i]] = i;
-
-	}
 	// Keys you have pressed down.
 	var keysPressed = [];
 
+	// Create a reverse lookup table.
+	var reverseLookup = {};
+
+	for(const [key, value] of Object.entries(keyboard)) {
+		reverseLookup[value] = key;
+	};
+	
 	// Generate keyboard
 	let visualKeyboard = document.getElementById('keyboard');
 	let selectSound = {
@@ -147,18 +147,14 @@ function playKeyboard() {
 				label.className = 'label';
 
 				let s = getDispStr(n, i, reverseLookup);
-				let cont = '<b class="keyLabel">' + s + '</b>' + '<br /><br />' //+ n.substr(0, 1) +
-				+ '<img class="mysvg" src=src/' + n[0] + '.svg />';
-				console.log(cont);
-				label.innerHTML = cont;
-					// '<span name="OCTAVE_LABEL" value="' + i + '">' + (__octave + parseInt(i)) + '</span>' + (n.substr(1, 1) ? n.substr(1, 1) : '');
+				label.innerHTML = `<b class="keyLabel"> ${s} </b><br /><br /><img class="glyphsvg" alt="the alethi glyph representing ${n}" src=images/${n}.svg />`;
 				thisKey.appendChild(label);
-				thisKey.setAttribute('ID', 'KEY_' + n + ',' + i);
-				const keyCode = reverseLookup[n + ',' + i];
+				thisKey.setAttribute('ID', `KEY_${n},${i}`);
+				const keyCode = reverseLookup[`${n},${i}`];
 				thisKey.addEventListener('mousedown', () => {
 					fnPlayKeyboard({ keyCode });
 				});
-				visualKeyboard[n + ',' + i] = thisKey;
+				visualKeyboard[`${n},${i}`] = thisKey;
 				visualKeyboard.appendChild(thisKey);
 
 				iKeys++;
@@ -168,29 +164,31 @@ function playKeyboard() {
 
 	visualKeyboard.style.width = iWhite * 40 + 'px';
 
-	window.addEventListener(evtListener[1], function () { n = keysPressed.length; while (n--) { fnRemoveKeyBinding({ keyCode: keysPressed[n] }); } });
+	
 
+
+	window.addEventListener(evtListener[1], function () { n = keysPressed.length; while (n--) { fnRemoveKeyBinding({ keyCode: keysPressed[n] }); } });
 
 	// Detect keypresses, play notes.
 
-	var fnPlayKeyboard = function (e) {
+	var fnPlayKeyboard = function ({keyCode}) {
 
 		var i = keysPressed.length;
 		while (i--) {
-			if (keysPressed[i] == e.keyCode) {
+			if (keysPressed[i] == keyCode) {
 				return false;
 			}
 		}
-		keysPressed.push(e.keyCode);
+		keysPressed.push(keyCode);
 
-		if (keyboard[e.keyCode]) {
-			if (visualKeyboard[keyboard[e.keyCode]]) {
-				visualKeyboard[keyboard[e.keyCode]].style.backgroundColor = pressColor;
-				//visualKeyboard[keyboard[e.keyCode]].classList.add('playing'); //adding class only affects keypress and not mouse click
-				visualKeyboard[keyboard[e.keyCode]].style.marginTop = '5px';
-				visualKeyboard[keyboard[e.keyCode]].style.boxShadow = 'none';
+		if (keyboard[keyCode]) {
+			if (visualKeyboard[keyboard[keyCode]]) {
+				visualKeyboard[keyboard[keyCode]].style.backgroundColor = pressColor;
+				//visualKeyboard[keyboard[keyCode]].classList.add('playing'); //adding class only affects keypress and not mouse click
+				visualKeyboard[keyboard[keyCode]].style.marginTop = '5px';
+				visualKeyboard[keyboard[keyCode]].style.boxShadow = 'none';
 			}
-			var arrPlayNote = keyboard[e.keyCode].split(',');
+			var arrPlayNote = keyboard[keyCode].split(',');
 			var note = arrPlayNote[0];
 			var octaveModifier = arrPlayNote[1] | 0;
 			fnPlayNote(note, __octave + octaveModifier);
@@ -200,16 +198,16 @@ function playKeyboard() {
 
 	}
 	// Remove key bindings once note is done.
-	var fnRemoveKeyBinding = function (e) {
+	var fnRemoveKeyBinding = function ({keyCode}) {
 
 		var i = keysPressed.length;
 		while (i--) {
-			if (keysPressed[i] == e.keyCode) {
-				if (visualKeyboard[keyboard[e.keyCode]]) {
-					//visualKeyboard[keyboard[e.keyCode]].classList.remove('playing');
-					visualKeyboard[keyboard[e.keyCode]].style.backgroundColor = '';
-					visualKeyboard[keyboard[e.keyCode]].style.marginTop = '';
-					visualKeyboard[keyboard[e.keyCode]].style.boxShadow = '';
+			if (keysPressed[i] == keyCode) {
+				if (visualKeyboard[keyboard[keyCode]]) {
+					//visualKeyboard[keyboard[keyCode]].classList.remove('playing');
+					visualKeyboard[keyboard[keyCode]].style.backgroundColor = '';
+					visualKeyboard[keyboard[keyCode]].style.marginTop = '';
+					visualKeyboard[keyboard[keyCode]].style.boxShadow = '';
 				}
 				keysPressed.splice(i, 1);
 			}
@@ -236,10 +234,12 @@ function playKeyboard() {
 		if (n == 'I' && i == 0) {
 			return ";";
 		} else {
-			return String.fromCharCode(lookup[n + ',' + i]);
+			return String.fromCharCode(lookup[`${n},${i}`]);
 		}
 
 	}
 	window.addEventListener('keydown', fnPlayKeyboard);
 	window.addEventListener('keyup', fnRemoveKeyBinding);
+
+	return fnPlayNote
 }

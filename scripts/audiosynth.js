@@ -88,13 +88,13 @@ var Synth, AudioSynth, AudioSynthInstrument;
 				}
 			}
 		}
-		if(!thisSound) { throw new Error('Invalid sound or sound ID: ' + sound); }
+		if(!thisSound) { throw new Error(`Invalid sound or sound ID: ${sound}`); }
 		var t = (new Date).valueOf();
 		this._temp = {};
 		octave |= 0;
 		octave = Math.min(8, Math.max(1, octave));
 		var time = !duration?2:parseFloat(duration);
-		if(typeof(this._notes[note])=='undefined') { throw new Error(note + ' is not a valid note.'); }
+		if(typeof(this._notes[note])=='undefined') { throw new Error(`${note} is not a valid note.` ); }
 		if(typeof(this._fileCache[sound][octave-1][note][time])!='undefined') {
 			if(this._debug) { console.log((new Date).valueOf() - t, 'ms to retrieve (cached)'); }
 			return this._fileCache[sound][octave-1][note][time];
@@ -183,7 +183,7 @@ var Synth, AudioSynth, AudioSynthInstrument;
 				found = true;
 			}
 		}
-		if(!found) { throw new Error('Invalid sound or sound ID: ' + sound); }
+		if(!found) { throw new Error(`Invalid sound or sound ID: ${sound}`); }
 		_encapsulated = true;
 		var ins = new AudioSynthInstrument(this, sound, n);
 		_encapsulated = false;

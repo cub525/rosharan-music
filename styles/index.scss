@@ -1,0 +1,147 @@
+@mixin on-circle($item-count, $circle-size, $item-size) {
+    // position: relative;
+    width:  $circle-size;
+    height: $circle-size;
+    padding: 0;
+    border-radius: 50%;      
+    
+    > * {
+      display: block;
+      position: absolute;
+      top:  50%; 
+      left: 50%;
+      width:  $item-size;
+      height: $item-size;
+      margin: -($item-size / 2);
+    
+      $angle: (360 / $item-count);
+      $rot: 0;
+  
+      @for $i from 1 through $item-count {
+        &:nth-of-type(#{$i}) {
+          transform: 
+            rotate($rot * 1deg)
+            translate($circle-size / 2)
+            rotate(90deg);
+        }
+  
+        $rot: $rot + $angle;
+      }
+    }
+}
+
+body {
+    /* font-family: Georgia; */
+    text-align: center;
+}
+
+.key {
+    position: absolute;
+    font-family: Helvetica;
+    font-weight: 100;
+    font-size: 12px;
+    border: 1px solid rgba(32, 32, 32, 0.2);
+    border-radius: 0px 0px 5px 5px;
+    cursor: pointer;
+    box-shadow: 0px 5px 1px rgba(32, 32, 32, 0.2);
+    -webkit-transition: margin 0.05s ease, background-color 0.05s ease, box-shadow 0.05s ease;
+    transition: margin 0.05s ease, background-color 0.05s ease, box-shadow 0.05s ease;
+
+    &:hover {
+    background-color: #71DB90;
+    }
+
+   .label {
+    position: relative;
+    text-align: center;
+    left: 0px;
+    right: 0px;
+    }
+}
+
+.keyLabel {
+    font-weight: 900;
+    text-shadow: 0px -1px 5px #EBF508;
+    font-size: 15px;
+}
+
+.black {
+    background-color: rgb(32, 32, 32);
+    color: #ffffff;
+    z-index: 1;
+    text-shadow: 0px -1px 1px #FF0000;
+
+    .label {
+        top: 45px;
+    }
+}
+
+.white {
+    background-color: #F2F2DE;
+    color: #3008F5;
+    z-index: 0;
+    text-shadow: 0px 1px 1px #08E8F5;
+
+    .label {
+        top: 125px;
+    }
+}
+
+.keyboard-holder {
+    margin: 30px auto;
+    height: 200px;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.glyphsvg {
+    width: 25px;
+}
+
+#img-container {
+    margin-top: 250px;
+    display: inline-block;
+    width: 455px;
+    height: 455px;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+#circular-image {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: inline-block;
+    width: 455px;
+    height: 455px;
+    overflow: hidden;
+    border-radius: 50%;
+
+    img {
+        width: auto;
+        height: 100%;
+        margin-left: 0px;
+        transform: rotate(-18deg);
+    }
+}
+
+.circular-pattern {
+    @include on-circle($item-count: 10, $circle-size: 445px, $item-size: 45px); 
+    // margin: 5em auto 0;
+    position: absolute;
+    border: 1px solid black;
+    top: 0px;
+    left: 0px;
+
+    .pattern { 
+      display: block; 
+      max-width: 100%;
+      transition: .15s;
+    }
+  }

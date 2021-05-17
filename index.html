@@ -1,20 +1,51 @@
 <!doctype html>
 
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
 
     <title>My Synth Keyboard</title>
     <meta name="a synthetic keyboard of my own creation" content="Synth Keyboard">
     <meta name="Emmett H">
-    <link rel="stylesheet" href="index.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/index.css">
+    <script src="scripts/audiosynth.js"></script>
 </head>
 
 <body>
     <div id="keyboard" height=50px></div>
-    <script src="src/audiosynth.js"></script>
-    <script src="src/playKeyboard.js"></script>
-    <script type="text/javascript">playKeyboard()</script>
+    <script src="scripts/playKeyboard.js"></script>
+    <script type="text/javascript">playNote = playKeyboard();</script>
+    <div id="img-container">
+        <div id="circular-image">
+            <img src="images/Heralds.jpg" usemap="#image_map">
+            <map name="image_map">
+                <area alt="J" title="J" onmouseup="playNote('J', 3);" coords="303,278 410,362 454,228 319,228 " shape="polygon">
+                <area alt="P" title="P" onmouseup="playNote('P', 3)" coords="203,141 254,140 301,13 161,13 " shape="polygon">
+                <area alt="I" title="I" onmouseup="playNote('I', 3);" coords="252,314 296,441 157,441 202,315 " shape="polygon">
+                <area alt="N" title="N" onmouseup="playNote('N', 3);" coords="155,282 197,311 157,442 45,358 " shape="polygon">
+                <area alt="T" title="T" onmouseup="playNote('T', 3);" coords="137,229 152,278 43,360 2,223 " shape="polygon">
+                <area alt="K" title="K" onmouseup="playNote('K', 3);" coords="258,313 299,284 410,363 296,442 " shape="polygon">
+                <area alt="B" title="B" onmouseup="playNote('B', 3);" coords="137,223 2,224 48,91 152,175 " shape="polygon">
+                <area alt="C" title="C" onmouseup="playNote('C', 3);" coords="304,177 320,224 454,228 413,98 " shape="polygon">
+                <area alt="V" title="V" onmouseup="playNote('V', 3);" coords="154,171 199,143 161,13 48,91 " shape="polygon">
+                <area alt="S" title="S" onmouseup="playNote('S', 3);" coords="300,14 409,97 301,176 258,141 " shape="polygon">
+            </map>
+        </div>
+        <!-- <div class="circular-pattern">
+            <b class="pattern">item 1</b>
+            <b class="pattern">item 2</b>
+            <b class="pattern">item 3</b>
+            <b class="pattern">item 4</b>
+            <b class="pattern">item 5</b>
+            <b class="pattern">item 6</b>
+            <b class="pattern">item 7</b>
+            <b class="pattern">item 8</b>
+            <b class="pattern">item 9</b>
+            <b class="pattern">item 10</b>
+        </div> -->
+    </div>
 </body>
+
 </html>
