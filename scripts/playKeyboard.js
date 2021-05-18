@@ -118,9 +118,7 @@ function playKeyboard() {
 	
 	// Generate keyboard
 	let visualKeyboard = document.getElementById('keyboard');
-	let selectSound = {
-		value: "1" //piano
-	};
+	let selectSound = document.getElementById('sound');
 
 	var iKeys = 0;
 	var iWhite = 0;

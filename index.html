@@ -14,37 +14,42 @@
 </head>
 
 <body>
+    <select id="sound">
+        <option value="0" selected="">Keyboard</option>
+        <option value="1">Organ</option>
+        <option value="2">Acoustic Guitar</option>
+        <option value="3">EDM, bro!</option>
+    </select>
     <div id="keyboard" height=50px></div>
     <script src="scripts/playKeyboard.js"></script>
     <script type="text/javascript">playNote = playKeyboard();</script>
     <div id="img-container">
+        <!-- <div class="circular-pattern">
+            <b class="pattern"></b>
+            <b class="pattern"></b>
+            <b class="pattern"></b>
+            <b class="pattern"></b>
+            <b class="pattern"></b>
+            <b class="pattern"></b>
+            <b class="pattern"></b>
+            <b class="pattern"></b>
+            <b class="pattern"></b>
+        </div> -->
         <div id="circular-image">
             <img src="images/Heralds.jpg" usemap="#image_map">
             <map name="image_map">
-                <area alt="J" title="J" onmouseup="playNote('J', 3);" coords="303,278 410,362 454,228 319,228 " shape="polygon">
-                <area alt="P" title="P" onmouseup="playNote('P', 3)" coords="203,141 254,140 301,13 161,13 " shape="polygon">
-                <area alt="I" title="I" onmouseup="playNote('I', 3);" coords="252,314 296,441 157,441 202,315 " shape="polygon">
-                <area alt="N" title="N" onmouseup="playNote('N', 3);" coords="155,282 197,311 157,442 45,358 " shape="polygon">
-                <area alt="T" title="T" onmouseup="playNote('T', 3);" coords="137,229 152,278 43,360 2,223 " shape="polygon">
-                <area alt="K" title="K" onmouseup="playNote('K', 3);" coords="258,313 299,284 410,363 296,442 " shape="polygon">
-                <area alt="B" title="B" onmouseup="playNote('B', 3);" coords="137,223 2,224 48,91 152,175 " shape="polygon">
-                <area alt="C" title="C" onmouseup="playNote('C', 3);" coords="304,177 320,224 454,228 413,98 " shape="polygon">
-                <area alt="V" title="V" onmouseup="playNote('V', 3);" coords="154,171 199,143 161,13 48,91 " shape="polygon">
-                <area alt="S" title="S" onmouseup="playNote('S', 3);" coords="300,14 409,97 301,176 258,141 " shape="polygon">
+                <area alt="Jezrien" title="Jezrien" onmouseup="playNote('J', 3);" coords="303,278 410,362 454,228 319,228 " shape="polygon">
+                <area alt="Pailiah" title="Pailiah" onmouseup="playNote('P', 3)" coords="203,141 254,140 301,13 161,13 " shape="polygon">
+                <area alt="Ishar" title="Ishar" onmouseup="playNote('I', 3);" coords="252,314 296,441 157,441 202,315 " shape="polygon">
+                <area alt="Nale" title="Nale" onmouseup="playNote('N', 3);" coords="155,282 197,311 157,442 45,358 " shape="polygon">
+                <area alt="Talenel" title="Talenel" onmouseup="playNote('T', 3);" coords="137,229 152,278 43,360 2,223 " shape="polygon">
+                <area alt="Kalak" title="Kalak" onmouseup="playNote('K', 3);" coords="258,313 299,284 410,363 296,442 " shape="polygon">
+                <area alt="Battar" title="Battar" onmouseup="playNote('B', 3);" coords="137,223 2,224 48,91 152,175 " shape="polygon">
+                <area alt="Chanarach" title="Chanarach" onmouseup="playNote('C', 3);" coords="304,177 320,224 454,228 413,98 " shape="polygon">
+                <area alt="Vedel" title="Vedel" onmouseup="playNote('V', 3);" coords="154,171 199,143 161,13 48,91 " shape="polygon">
+                <area alt="Shalash" title="Shalash" onmouseup="playNote('S', 3);" coords="300,14 409,97 301,176 258,141 " shape="polygon">
             </map>
         </div>
-        <!-- <div class="circular-pattern">
-            <b class="pattern">item 1</b>
-            <b class="pattern">item 2</b>
-            <b class="pattern">item 3</b>
-            <b class="pattern">item 4</b>
-            <b class="pattern">item 5</b>
-            <b class="pattern">item 6</b>
-            <b class="pattern">item 7</b>
-            <b class="pattern">item 8</b>
-            <b class="pattern">item 9</b>
-            <b class="pattern">item 10</b>
-        </div> -->
     </div>
 </body>
 

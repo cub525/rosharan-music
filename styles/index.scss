@@ -104,6 +104,7 @@ body {
 #img-container {
     margin-top: 250px;
     display: inline-block;
+    place-items: center;
     width: 455px;
     height: 455px;
     position: relative;
@@ -111,6 +112,7 @@ body {
     -moz-user-select: none;
     -o-user-select: none;
     user-select: none;
+
 }
 
 #circular-image {
@@ -132,10 +134,9 @@ body {
 }
 
 .circular-pattern {
-    @include on-circle($item-count: 10, $circle-size: 445px, $item-size: 45px); 
+    @include on-circle($item-count: 10, $circle-size: 454px, $item-size: 45px); 
     // margin: 5em auto 0;
     position: absolute;
-    border: 1px solid black;
     top: 0px;
     left: 0px;
 
