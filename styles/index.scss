@@ -30,9 +30,33 @@
     }
 }
 
+:root {
+    --text-color: hsl(0, 0%, 0%);
+    --ch1-color: #ff8080;
+    --ch2-color: #ccffff;
+    --ch3-color: #cdb3e6;
+    --background: hsl(210, 35%, 85%);
+    --text-color-2: hsl(210, 10%, 45%);
+    --scrollbar-color: var(--text-color-2);
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    :root{
+      --text-color: hsl(210, 30%, 75%);
+      --ch1-color: hsl(310, 45%, 75%);
+      --ch2-color: hsl(210, 45%, 75%);
+      --ch3-color: hsl(110, 45%, 75%);
+      --background: hsl(210, 15%, 15%);
+      --text-color-2: hsl(209, 29%, 30%);
+      --scrollbar-color: var(--text-color-2);
+    }
+  }
+
 body {
     /* font-family: Georgia; */
     text-align: center;
+    color: var(--text-color);
+    background: var(--background);
 }
 
 .key {
