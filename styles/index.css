@@ -112,8 +112,8 @@ body {
   border-radius: 50%;
 }
 #circular-image img {
-  width: auto;
-  height: 100%;
+  width: clamp(0px, 100%, 455);
+  height: clamp(0px, 100%, 455);
   margin-left: 0px;
   transform: rotate(-18deg);
 }

@@ -150,8 +150,9 @@ body {
     border-radius: 50%;
 
     img {
-        width: auto;
-        height: 100%;
+        $size : clamp(0px, 100%, 455);
+        width: $size;
+        height: $size;
         margin-left: 0px;
         transform: rotate(-18deg);
     }
