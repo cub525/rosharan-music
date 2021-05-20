@@ -10,7 +10,24 @@
     <meta name="Emmett H">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/index.css">
+    <link rel="icon" href="images/music_icon_reg.svg">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" type="image/png" href="./images/icons/icon-192x192.png">
     <script src="scripts/audiosynth.js"></script>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Alethi Music">
+    <meta name="apple-mobile-web-app-title" content="Alethi Music">
+    <meta name="theme-color" content="#3771C8">
+    <meta name="msapplication-navbutton-color" content="#3771C8">
+    <meta name="description" content="A demonstration of Alethi Music (The ten step music system). As opposed to the western 12 step system">
+    <script>
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', function () {
+            navigator.serviceWorker.register('service-worker.js');
+          });
+        }
+      </script>
 </head>
 
 <body>
