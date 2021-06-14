@@ -26,6 +26,10 @@ body {
   background: var(--background);
 }
 
+header {
+  font-size: 2rem;
+}
+
 .key {
   position: absolute;
   font-family: Helvetica;
